@@ -29,15 +29,15 @@ public class UsuarioService {
 		return ur.save(usuario);		
 	}
 	
-	public ResponseEntity<Usuario> login( UsuarioDto usuariodto) {
+	public ResponseEntity<Object> login( UsuarioDto usuariodto) {
 		
 		List<Usuario> list = ur.findByNomeAndSenha(usuariodto.getNome(), usuariodto.getSenha());
 		if(list.isEmpty()) {
 			Usuario usuario = new Usuario();
 			usuario.setId(-1);
-			return new ResponseEntity<Usuario>(usuario,HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<Object>(usuario.getId(),HttpStatus.UNAUTHORIZED);
 		} else {
-			return new ResponseEntity<Usuario>(list.get(0),HttpStatus.OK);
+			return new ResponseEntity<Object>(list.get(0).getId(),HttpStatus.OK);
 		}
 	}
 	

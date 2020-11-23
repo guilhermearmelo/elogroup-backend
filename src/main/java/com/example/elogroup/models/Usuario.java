@@ -1,11 +1,14 @@
 package com.example.elogroup.models;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +23,10 @@ public class Usuario implements Serializable {
 	private String nome;
 	
 	private String senha;
-
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	private List<Lead> leads;
+	
 	public long getId() {
 		return id;
 	}
@@ -43,6 +49,14 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Lead> getLeads() {
+		return leads;
+	}
+
+	public void setLeads(List<Lead> leads) {
+		this.leads = leads;
 	}
 	
 	
