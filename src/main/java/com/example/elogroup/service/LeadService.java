@@ -48,4 +48,14 @@ public class LeadService {
 		
 		//return lr.save(lead);		
 	}
+
+	public Lead updateStatusLead(long id) {
+		Lead lead = lr.findById(id);
+		
+		lead.setStatus(lead.getStatus()+1);
+		
+		lr.save(lead);
+
+		return lead;
+	}
 }
