@@ -39,6 +39,7 @@ public class LeadService {
 		Usuario usuario = ur.findById(id);
 		
 		List<Lead> ll = usuario.getLeads();
+		lead.setStatus(0);
 		ll.add(lead);
 		usuario.setLeads(ll);
 		
