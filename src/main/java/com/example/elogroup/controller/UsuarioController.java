@@ -44,4 +44,9 @@ public class UsuarioController {
 	public ResponseEntity<Object> login(@RequestBody UsuarioDto usuariodto) {
 		return us.login(usuariodto);
 	}
+	
+	@GetMapping("/isAUser/{userName}")
+	public boolean isAUser(@PathVariable(value="userName") String nome){
+		return us.isAUser(nome);
+	}
 }

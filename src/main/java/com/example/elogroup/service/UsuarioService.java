@@ -3,6 +3,7 @@ package com.example.elogroup.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,15 @@ public class UsuarioService {
 		usuario.setSenha(usuariodto.getSenha());
 		
 		return usuario;
+	}
+
+	public boolean isAUser(String nome) {
+		Usuario u = new Usuario();
+		u.setNome(nome);
+		
+		List<Usuario> lu = ur.findByNome(u.getNome());
+		if(lu.size() > 0) 
+			return true;
+		return false;
 	}
 }
